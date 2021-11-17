@@ -1,0 +1,14 @@
+E:\程式設計\C#\LiveTimer\bin\Debug\LiveTimer.exe.config
+E:\程式設計\C#\LiveTimer\bin\Debug\LiveTimer.exe
+E:\程式設計\C#\LiveTimer\bin\Debug\LiveTimer.pdb
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.csprojAssemblyReference.cache
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.Form1.resources
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.Properties.Resources.resources
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.csproj.GenerateResource.cache
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.csproj.CoreCompileInputs.cache
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.exe
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.pdb
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.UCStartTime.resources
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.UCSetTime.resources
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.UCEndTime.resources
+E:\程式設計\C#\LiveTimer\obj\Debug\LiveTimer.Form2.resources
