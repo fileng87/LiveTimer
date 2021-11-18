@@ -87,7 +87,7 @@ namespace LiveTimer
             this.btn_show.Name = "btn_show";
             this.btn_show.Size = new System.Drawing.Size(175, 47);
             this.btn_show.TabIndex = 1;
-            this.btn_show.Text = "顯示預覽";
+            this.btn_show.Text = "顯示投影";
             this.btn_show.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_show.UseVisualStyleBackColor = true;
             this.btn_show.Click += new System.EventHandler(this.btn_show_Click);

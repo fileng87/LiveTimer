@@ -32,6 +32,8 @@ namespace LiveTimer
 
         public Form2 fm = new Form2();
 
+        private bool s = false;
+
         private void pnl_top_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -146,13 +148,24 @@ namespace LiveTimer
 
         private void btn_show_Click(object sender, EventArgs e)
         {
-            if(fm != null)
+            if(s != true)
             {
-                fm.Close();
+                btn_show.Text = "關閉投影";
+                if(fm != null)
+                {
+                    fm.Close();
+                }
+                fm = new Form2();
+                fm.TopLevel = true;
+                fm.Show();
+                s = true;
             }
-            fm = new Form2();
-            fm.TopLevel = true;
-            fm.Show();
+            else
+            {
+                btn_show.Text = "顯示投影";
+                fm.Close();
+                s = false;
+            }
         }
     }
 }
