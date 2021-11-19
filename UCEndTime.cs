@@ -140,6 +140,11 @@ namespace LiveTimer
             txt_S.Text = DateTime.Now.Second.ToString();
         }
 
+        private void pnl_title_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void btn_reset_Click(object sender, EventArgs e)
         {
             txt_H.Text = DateTime.Now.Hour.ToString().PadLeft(2, '0');
@@ -169,13 +174,8 @@ namespace LiveTimer
                     lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFF8C");
                     return 2;
                 }
-                else if (shh == 0 && smm < 10)
-                {
-                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
-                    return 3;
-                }
-                lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
-                return 0;
+                lab_Time.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
+                return 3;
             }
 
         }

@@ -61,6 +61,7 @@ namespace LiveTimer
             this.pnl_title.Name = "pnl_title";
             this.pnl_title.Size = new System.Drawing.Size(406, 295);
             this.pnl_title.TabIndex = 6;
+            this.pnl_title.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_title_Paint);
             // 
             // lab_Time
             // 
