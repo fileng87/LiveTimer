@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LiveTimer
 {
@@ -111,11 +112,13 @@ namespace LiveTimer
             timer1.Stop();
             StartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, int.Parse(txt_H.Text), int.Parse(txt_M.Text), int.Parse(txt_S.Text));
             timer1.Start();
+            timer2.Start();
         }
 
         private void btn_Stop_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            timer2.Stop();
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -134,6 +137,27 @@ namespace LiveTimer
                 chackflag = false;
             } else if(chack>0){
                 chackflag = true;
+                timer2.Stop();
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            string path = textBox1.Text == "" ? Application.StartupPath + @"\StartTime.txt" : textBox1.Text + @"\StartTime.txt";
+            if (!File.Exists(path))
+            {
+                using (FileStream fs = File.Create(path))
+                {
+                    byte[] info = new UTF8Encoding(true).GetBytes(lab_Time.Text);
+                    fs.Write(info, 0, info.Length);
+                }
+            }
+            else
+            {
+                using(StreamWriter sw = new StreamWriter(path))
+                {
+                    sw.WriteAsync(lab_Time.Text);
+                }
             }
         }
 
@@ -176,7 +200,6 @@ namespace LiveTimer
                     return 0;
                 }
             }
-
         }
     }
 }

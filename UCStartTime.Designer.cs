@@ -31,6 +31,7 @@ namespace LiveTimer
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_contral = new System.Windows.Forms.Panel();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.txt_H = new System.Windows.Forms.TextBox();
             this.btn_H_Add = new System.Windows.Forms.Button();
             this.lab_S = new System.Windows.Forms.Label();
@@ -48,7 +49,8 @@ namespace LiveTimer
             this.pnl_title = new System.Windows.Forms.Panel();
             this.lab_Time = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_reset = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnl_contral.SuspendLayout();
             this.pnl_title.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +58,7 @@ namespace LiveTimer
             // pnl_contral
             // 
             this.pnl_contral.Controls.Add(this.btn_reset);
+            this.pnl_contral.Controls.Add(this.textBox1);
             this.pnl_contral.Controls.Add(this.txt_H);
             this.pnl_contral.Controls.Add(this.btn_H_Add);
             this.pnl_contral.Controls.Add(this.lab_S);
@@ -75,6 +78,22 @@ namespace LiveTimer
             this.pnl_contral.Name = "pnl_contral";
             this.pnl_contral.Size = new System.Drawing.Size(406, 160);
             this.pnl_contral.TabIndex = 2;
+            // 
+            // btn_reset
+            // 
+            this.btn_reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.btn_reset.FlatAppearance.BorderSize = 0;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reset.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.Location = new System.Drawing.Point(80, 96);
+            this.btn_reset.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(78, 23);
+            this.btn_reset.TabIndex = 4;
+            this.btn_reset.Text = "重置";
+            this.btn_reset.UseVisualStyleBackColor = false;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // txt_H
             // 
@@ -310,21 +329,24 @@ namespace LiveTimer
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // btn_reset
+            // timer2
             // 
-            this.btn_reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.btn_reset.FlatAppearance.BorderSize = 0;
-            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_reset.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_reset.ForeColor = System.Drawing.Color.White;
-            this.btn_reset.Location = new System.Drawing.Point(80, 96);
-            this.btn_reset.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(78, 23);
-            this.btn_reset.TabIndex = 4;
-            this.btn_reset.Text = "重置";
-            this.btn_reset.UseVisualStyleBackColor = false;
-            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.DarkGray;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("微軟正黑體", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(80, 128);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(246, 23);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.txt_H_TextChanged);
             // 
             // UCStartTime
             // 
@@ -364,5 +386,7 @@ namespace LiveTimer
         private System.Windows.Forms.Label lab_Time;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btn_reset;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
