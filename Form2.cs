@@ -23,7 +23,63 @@ namespace LiveTimer
         {
 
         }
-
+        public void settimered(string c)
+        {
+            if (c == "0")
+            {
+                label2.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
+            } 
+            if (c == "1")
+            {
+                label2.ForeColor = ColorTranslator.FromHtml("#8CFF8C");
+            }
+            if (c == "2")
+            {
+                label2.ForeColor = ColorTranslator.FromHtml("#FFFF8C");
+            }
+            if (c == "3")
+            {
+                label2.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
+            }
+        }
+        public void settimeredstart(int c)
+        {
+            if (c == 0)
+            {
+                label3.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
+            }
+            if (c ==1)
+            {
+                label3.ForeColor = ColorTranslator.FromHtml("#8CFF8C");
+            }
+            if (c ==2)
+            {
+                label3.ForeColor = ColorTranslator.FromHtml("#FFFF8C");
+            }
+            if (c == 3)
+            {
+                label3.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
+            }
+        }
+        public void settimeredend(int c)
+        {
+            if (c == 0)
+            {
+                label4.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
+            }
+            if (c == 1)
+            {
+                label4.ForeColor = ColorTranslator.FromHtml("#8CFF8C");
+            }
+            if (c == 2)
+            {
+                label4.ForeColor = ColorTranslator.FromHtml("#FFFF8C");
+            }
+            if (c == 3)
+            {
+                label4.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
+            }
+        }
         public void NowTime(string time)
         {
             label1.Text = time;
@@ -32,6 +88,7 @@ namespace LiveTimer
         public void SetTime(string nowtime)
         {
             label2.Text = nowtime;
+
         }
 
         public void StartTime(string nowtime)
@@ -43,7 +100,19 @@ namespace LiveTimer
         {
             label4.Text = nowtime;
         }
-
+        
+        public int fontsi()
+        {
+            label1.Font = label2.Font = label3.Font = label4.Font = new Font(label1.Font.FontFamily, label1.Font.Size - 1);
+            return (int)label1.Font.Size;
+            
+        }
+        public int fontsid()
+        {
+            label1.Font = label2.Font = label3.Font = label4.Font = new Font(label1.Font.FontFamily, label1.Font.Size + 1);
+            return (int)label1.Font.Size;
+            
+        }
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F11 && s == true)
@@ -60,6 +129,21 @@ namespace LiveTimer
                 label1.Font = label2.Font = label3.Font = label4.Font = new Font(label1.Font.FontFamily, label1.Font.Size - 25);
                 s = true;
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public int getFontSize()
+        {
+            return (int)label1.Font.Size;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

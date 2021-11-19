@@ -31,6 +31,9 @@ namespace LiveTimer
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_page = new System.Windows.Forms.Panel();
+            this.txt_S = new System.Windows.Forms.TextBox();
+            this.btn_S_Sub = new System.Windows.Forms.Button();
+            this.btn_S_Add = new System.Windows.Forms.Button();
             this.pnl_btn = new System.Windows.Forms.Panel();
             this.btn_show = new System.Windows.Forms.Button();
             this.btn_endTime = new System.Windows.Forms.Button();
@@ -54,6 +57,9 @@ namespace LiveTimer
             // pnl_page
             // 
             this.pnl_page.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.pnl_page.Controls.Add(this.txt_S);
+            this.pnl_page.Controls.Add(this.btn_S_Sub);
+            this.pnl_page.Controls.Add(this.btn_S_Add);
             this.pnl_page.Controls.Add(this.pnl_btn);
             this.pnl_page.Controls.Add(this.btn_show);
             this.pnl_page.Controls.Add(this.btn_endTime);
@@ -64,8 +70,58 @@ namespace LiveTimer
             this.pnl_page.Location = new System.Drawing.Point(0, 0);
             this.pnl_page.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_page.Name = "pnl_page";
-            this.pnl_page.Size = new System.Drawing.Size(175, 392);
+            this.pnl_page.Size = new System.Drawing.Size(175, 428);
             this.pnl_page.TabIndex = 0;
+            // 
+            // txt_S
+            // 
+            this.txt_S.BackColor = System.Drawing.Color.DarkGray;
+            this.txt_S.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_S.Font = new System.Drawing.Font("微軟正黑體", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txt_S.ForeColor = System.Drawing.Color.White;
+            this.txt_S.Location = new System.Drawing.Point(36, 348);
+            this.txt_S.Margin = new System.Windows.Forms.Padding(0);
+            this.txt_S.Multiline = true;
+            this.txt_S.Name = "txt_S";
+            this.txt_S.Size = new System.Drawing.Size(95, 23);
+            this.txt_S.TabIndex = 3;
+            this.txt_S.Text = "0";
+            this.txt_S.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_S.Visible = false;
+            // 
+            // btn_S_Sub
+            // 
+            this.btn_S_Sub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.btn_S_Sub.FlatAppearance.BorderSize = 0;
+            this.btn_S_Sub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_S_Sub.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_S_Sub.ForeColor = System.Drawing.Color.White;
+            this.btn_S_Sub.Location = new System.Drawing.Point(13, 348);
+            this.btn_S_Sub.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_S_Sub.Name = "btn_S_Sub";
+            this.btn_S_Sub.Size = new System.Drawing.Size(23, 23);
+            this.btn_S_Sub.TabIndex = 4;
+            this.btn_S_Sub.Text = "<";
+            this.btn_S_Sub.UseVisualStyleBackColor = false;
+            this.btn_S_Sub.Visible = false;
+            this.btn_S_Sub.Click += new System.EventHandler(this.btn_S_Sub_Click);
+            // 
+            // btn_S_Add
+            // 
+            this.btn_S_Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.btn_S_Add.FlatAppearance.BorderSize = 0;
+            this.btn_S_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_S_Add.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_S_Add.ForeColor = System.Drawing.Color.White;
+            this.btn_S_Add.Location = new System.Drawing.Point(131, 348);
+            this.btn_S_Add.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_S_Add.Name = "btn_S_Add";
+            this.btn_S_Add.Size = new System.Drawing.Size(23, 23);
+            this.btn_S_Add.TabIndex = 5;
+            this.btn_S_Add.Text = ">";
+            this.btn_S_Add.UseVisualStyleBackColor = false;
+            this.btn_S_Add.Visible = false;
+            this.btn_S_Add.Click += new System.EventHandler(this.btn_S_Add_Click);
             // 
             // pnl_btn
             // 
@@ -82,7 +138,7 @@ namespace LiveTimer
             this.btn_show.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_show.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_show.ForeColor = System.Drawing.Color.White;
-            this.btn_show.Location = new System.Drawing.Point(0, 345);
+            this.btn_show.Location = new System.Drawing.Point(0, 381);
             this.btn_show.Margin = new System.Windows.Forms.Padding(0);
             this.btn_show.Name = "btn_show";
             this.btn_show.Size = new System.Drawing.Size(175, 47);
@@ -217,6 +273,7 @@ namespace LiveTimer
             this.pnl_top.Name = "pnl_top";
             this.pnl_top.Size = new System.Drawing.Size(406, 25);
             this.pnl_top.TabIndex = 3;
+            this.pnl_top.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_top_Paint);
             this.pnl_top.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnl_top_MouseDown);
             this.pnl_top.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_top_MouseMove);
             this.pnl_top.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnl_top_MouseUp);
@@ -243,7 +300,7 @@ namespace LiveTimer
             this.pnl_default.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.pnl_default.Location = new System.Drawing.Point(175, 25);
             this.pnl_default.Name = "pnl_default";
-            this.pnl_default.Size = new System.Drawing.Size(406, 367);
+            this.pnl_default.Size = new System.Drawing.Size(406, 403);
             this.pnl_default.TabIndex = 4;
             // 
             // timer1
@@ -256,7 +313,7 @@ namespace LiveTimer
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
-            this.ClientSize = new System.Drawing.Size(581, 392);
+            this.ClientSize = new System.Drawing.Size(581, 428);
             this.Controls.Add(this.pnl_default);
             this.Controls.Add(this.pnl_top);
             this.Controls.Add(this.pnl_page);
@@ -264,6 +321,7 @@ namespace LiveTimer
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnl_page.ResumeLayout(false);
+            this.pnl_page.PerformLayout();
             this.pnl_nowTime.ResumeLayout(false);
             this.pnl_nowTime.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -291,6 +349,9 @@ namespace LiveTimer
         private System.Windows.Forms.Panel pnl_default;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lab_titel;
+        private System.Windows.Forms.TextBox txt_S;
+        private System.Windows.Forms.Button btn_S_Sub;
+        private System.Windows.Forms.Button btn_S_Add;
     }
 }
 

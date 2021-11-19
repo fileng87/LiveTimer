@@ -16,7 +16,8 @@ namespace LiveTimer
         {
             InitializeComponent();
         }
-
+        public int shh, smm, sss;
+        public bool chackflag;
         private DateTime StartTime;
 
         public string Time()
@@ -26,9 +27,9 @@ namespace LiveTimer
 
         private void StartTime_Load(object sender, EventArgs e)
         {
-
+        
         }
-
+   
         private int checknum(int temp)
         {
             if (temp >= 60)
@@ -116,20 +117,64 @@ namespace LiveTimer
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
-        {
+        {            
             long elapsedTicks = Math.Abs(DateTime.Now.Ticks - StartTime.Ticks);
+            long chack = DateTime.Now.Ticks - StartTime.Ticks;
             TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
+            shh = elapsedSpan.Hours;
+            smm = elapsedSpan.Minutes;
+            sss = elapsedSpan.Seconds;
             string h = elapsedSpan.Hours.ToString().PadLeft(2, '0');
             string m = elapsedSpan.Minutes.ToString().PadLeft(2, '0');
             string s = elapsedSpan.Seconds.ToString().PadLeft(2, '0');
             lab_Time.Text = $"{h}:{m}:{s}";
+            if (chack <= 0) {
+                chackflag = false;
+            } else if(chack>0){
+                chackflag = true;
+            }
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
-            txt_H.Text = txt_M.Text = txt_S.Text = "0";
+            txt_H.Text = DateTime.Now.Hour.ToString().PadLeft(2, '0');
+            txt_M.Text = DateTime.Now.Minute.ToString().PadLeft(2, '0');
+            txt_S.Text = DateTime.Now.Second.ToString().PadLeft(2, '0');
             timer1.Stop();
             lab_Time.Text = $"00:00:00";
+        }
+        public int Necolor()
+        {
+            if (chackflag)
+            {
+                lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
+                return 0;
+                
+            }
+            else
+            {
+                if (shh == 0 && smm == 0 && sss <= 10)
+                {
+                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
+                    return 3;
+                }
+                else if (shh == 0 && smm == 0 && sss <= 30)
+                {
+                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFF8C");
+                    return 2;
+                }
+                else if (shh == 0 && smm == 0 && sss <= 59)
+                {
+                    lab_Time.ForeColor = ColorTranslator.FromHtml("#8CFF8C");
+                    return 1;
+                }
+                else
+                {
+                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
+                    return 0;
+                }
+            }
+
         }
     }
 }

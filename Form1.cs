@@ -34,6 +34,24 @@ namespace LiveTimer
 
         private bool s = false;
 
+    
+
+
+
+        private int checknum(int fontss)
+        {
+            if (fontss >= 73)
+            {
+                return 0;
+            }
+            else if (fontss < 0)
+            {
+                return 72;
+            }
+            return fontss;
+        }
+
+
         private void pnl_top_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -57,6 +75,7 @@ namespace LiveTimer
         {
             btn_setTime_Click(null, null);
             timer1.Start();
+            txt_S.Text = fm.getFontSize().ToString();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -64,14 +83,18 @@ namespace LiveTimer
             string h = DateTime.Now.Hour.ToString().PadLeft(2, '0');
             string m = DateTime.Now.Minute.ToString().PadLeft(2, '0');
             string s = DateTime.Now.Second.ToString().PadLeft(2, '0');
+            
             lab_nowTime.Text = $"現在時間：{h}:{m}:{s}";
             fm.NowTime($"{h}:{m}:{s}");
             fm.SetTime(setTime.Time());
             fm.StartTime(startTime.Time());
             fm.EndTime(endTime.Time());
+            fm.settimered(setTime.Necolor());
+            fm.settimeredstart(startTime.Necolor());
+            fm.settimeredend(endTime.Necolor());
         }
-
-        private void setBtn(Button btn)
+       
+            private void setBtn(Button btn)
         {
             pnl_btn.Visible = true;
             pnl_btn.Height = btn.Height;
@@ -105,6 +128,7 @@ namespace LiveTimer
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
+            fm.Close();
         }
 
         private void btn_hide_Click(object sender, EventArgs e)
@@ -136,6 +160,7 @@ namespace LiveTimer
             setBtn(btn_startTime);
             lab_titel.Text = "距離開始的時間";
             openUserContral(startTime);
+           
         }
 
         private void btn_endTime_Click(object sender, EventArgs e)
@@ -151,7 +176,10 @@ namespace LiveTimer
             if(s != true)
             {
                 btn_show.Text = "關閉投影";
-                if(fm != null)
+                btn_S_Sub.Visible = true;
+                btn_S_Add.Visible = true;
+                txt_S.Visible = true;
+                if (fm != null)
                 {
                     fm.Close();
                 }
@@ -163,9 +191,30 @@ namespace LiveTimer
             else
             {
                 btn_show.Text = "顯示投影";
+                btn_S_Sub.Visible = false;
+                btn_S_Add.Visible = false;
+                txt_S.Visible = false;
                 fm.Close();
                 s = false;
+                txt_S.Text = fm.getFontSize().ToString();
             }
+        }
+
+        private void pnl_top_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+ 
+
+        private void btn_S_Sub_Click(object sender, EventArgs e)
+        {
+            txt_S.Text = fm.fontsi().ToString();
+        }
+
+        private void btn_S_Add_Click(object sender, EventArgs e)
+        {
+            txt_S.Text = fm.fontsid().ToString();
         }
     }
 }
