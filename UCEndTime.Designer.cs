@@ -59,7 +59,7 @@ namespace LiveTimer
             this.pnl_title.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_title.Location = new System.Drawing.Point(0, 0);
             this.pnl_title.Name = "pnl_title";
-            this.pnl_title.Size = new System.Drawing.Size(406, 199);
+            this.pnl_title.Size = new System.Drawing.Size(406, 295);
             this.pnl_title.TabIndex = 6;
             // 
             // lab_Time
@@ -67,7 +67,7 @@ namespace LiveTimer
             this.lab_Time.AutoSize = true;
             this.lab_Time.Font = new System.Drawing.Font("微軟正黑體", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lab_Time.ForeColor = System.Drawing.Color.White;
-            this.lab_Time.Location = new System.Drawing.Point(19, 47);
+            this.lab_Time.Location = new System.Drawing.Point(20, 107);
             this.lab_Time.Name = "lab_Time";
             this.lab_Time.Size = new System.Drawing.Size(371, 101);
             this.lab_Time.TabIndex = 0;
@@ -91,7 +91,7 @@ namespace LiveTimer
             this.pnl_contral.Controls.Add(this.btn_reset);
             this.pnl_contral.Controls.Add(this.btn_Stop);
             this.pnl_contral.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnl_contral.Location = new System.Drawing.Point(0, 205);
+            this.pnl_contral.Location = new System.Drawing.Point(0, 301);
             this.pnl_contral.Name = "pnl_contral";
             this.pnl_contral.Size = new System.Drawing.Size(406, 160);
             this.pnl_contral.TabIndex = 7;
@@ -333,7 +333,7 @@ namespace LiveTimer
             this.Controls.Add(this.pnl_contral);
             this.Controls.Add(this.pnl_title);
             this.Name = "UCEndTime";
-            this.Size = new System.Drawing.Size(406, 365);
+            this.Size = new System.Drawing.Size(406, 461);
             this.Load += new System.EventHandler(this.UCEndTime_Load);
             this.pnl_title.ResumeLayout(false);
             this.pnl_title.PerformLayout();

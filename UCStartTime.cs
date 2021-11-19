@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
 
 namespace LiveTimer
 {
@@ -20,10 +21,16 @@ namespace LiveTimer
         public int shh, smm, sss;
         public bool chackflag;
         private DateTime StartTime;
+        public bool zerotime = false;
 
         public string Time()
         {
             return lab_Time.Text;
+        }
+
+        public string Time_()
+        {
+            return zerotime ? "00:00:00" : lab_Time.Text;
         }
 
         private void StartTime_Load(object sender, EventArgs e)
@@ -112,13 +119,13 @@ namespace LiveTimer
             timer1.Stop();
             StartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, int.Parse(txt_H.Text), int.Parse(txt_M.Text), int.Parse(txt_S.Text));
             timer1.Start();
-            timer2.Start();
+            //timer2.Start();
         }
 
         private void btn_Stop_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            timer2.Stop();
+            //timer2.Stop();
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -135,13 +142,15 @@ namespace LiveTimer
             lab_Time.Text = $"{h}:{m}:{s}";
             if (chack <= 0) {
                 chackflag = false;
+                zerotime = false;
             } else if(chack>0){
                 chackflag = true;
-                timer2.Stop();
+                //timer2.Stop();
+                zerotime = true;
             }
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
+        /*private void timer2_Tick(object sender, EventArgs e)
         {
             string path = textBox1.Text == "" ? Application.StartupPath + @"\StartTime.txt" : textBox1.Text + @"\StartTime.txt";
             if (!File.Exists(path))
@@ -159,7 +168,7 @@ namespace LiveTimer
                     sw.WriteAsync(lab_Time.Text);
                 }
             }
-        }
+        }*/
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
@@ -169,6 +178,7 @@ namespace LiveTimer
             timer1.Stop();
             lab_Time.Text = $"00:00:00";
         }
+
         public int Necolor()
         {
             if (chackflag)
@@ -200,6 +210,19 @@ namespace LiveTimer
                     return 0;
                 }
             }
+        }
+
+        private void serverData(string data, HttpListener listener)
+        {
+            HttpListenerContext context = listener.GetContext();
+            HttpListenerRequest request = context.Request;
+            HttpListenerResponse response = context.Response;
+            response.StatusCode = 200;
+            response.ContentType = "text/plain";
+            response.SendChunked = true;
+            byte[] info = new UTF8Encoding(true).GetBytes(data);
+            response.OutputStream.Write(info, 0, info.Length);
+            response.OutputStream.Close();
         }
     }
 }

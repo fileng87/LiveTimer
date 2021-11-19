@@ -31,11 +31,9 @@ namespace LiveTimer
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_page = new System.Windows.Forms.Panel();
-            this.txt_S = new System.Windows.Forms.TextBox();
-            this.btn_S_Sub = new System.Windows.Forms.Button();
-            this.btn_S_Add = new System.Windows.Forms.Button();
             this.pnl_btn = new System.Windows.Forms.Panel();
             this.btn_show = new System.Windows.Forms.Button();
+            this.btn_SerialPortSetting = new System.Windows.Forms.Button();
             this.btn_endTime = new System.Windows.Forms.Button();
             this.btn_startTime = new System.Windows.Forms.Button();
             this.btn_setTime = new System.Windows.Forms.Button();
@@ -48,6 +46,7 @@ namespace LiveTimer
             this.lab_titel = new System.Windows.Forms.Label();
             this.pnl_default = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnl_page.SuspendLayout();
             this.pnl_nowTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,11 +56,9 @@ namespace LiveTimer
             // pnl_page
             // 
             this.pnl_page.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.pnl_page.Controls.Add(this.txt_S);
-            this.pnl_page.Controls.Add(this.btn_S_Sub);
-            this.pnl_page.Controls.Add(this.btn_S_Add);
             this.pnl_page.Controls.Add(this.pnl_btn);
             this.pnl_page.Controls.Add(this.btn_show);
+            this.pnl_page.Controls.Add(this.btn_SerialPortSetting);
             this.pnl_page.Controls.Add(this.btn_endTime);
             this.pnl_page.Controls.Add(this.btn_startTime);
             this.pnl_page.Controls.Add(this.btn_setTime);
@@ -70,58 +67,8 @@ namespace LiveTimer
             this.pnl_page.Location = new System.Drawing.Point(0, 0);
             this.pnl_page.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_page.Name = "pnl_page";
-            this.pnl_page.Size = new System.Drawing.Size(175, 428);
+            this.pnl_page.Size = new System.Drawing.Size(175, 486);
             this.pnl_page.TabIndex = 0;
-            // 
-            // txt_S
-            // 
-            this.txt_S.BackColor = System.Drawing.Color.DarkGray;
-            this.txt_S.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_S.Font = new System.Drawing.Font("微軟正黑體", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txt_S.ForeColor = System.Drawing.Color.White;
-            this.txt_S.Location = new System.Drawing.Point(36, 348);
-            this.txt_S.Margin = new System.Windows.Forms.Padding(0);
-            this.txt_S.Multiline = true;
-            this.txt_S.Name = "txt_S";
-            this.txt_S.Size = new System.Drawing.Size(95, 23);
-            this.txt_S.TabIndex = 3;
-            this.txt_S.Text = "0";
-            this.txt_S.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_S.Visible = false;
-            // 
-            // btn_S_Sub
-            // 
-            this.btn_S_Sub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.btn_S_Sub.FlatAppearance.BorderSize = 0;
-            this.btn_S_Sub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_S_Sub.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_S_Sub.ForeColor = System.Drawing.Color.White;
-            this.btn_S_Sub.Location = new System.Drawing.Point(13, 348);
-            this.btn_S_Sub.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_S_Sub.Name = "btn_S_Sub";
-            this.btn_S_Sub.Size = new System.Drawing.Size(23, 23);
-            this.btn_S_Sub.TabIndex = 4;
-            this.btn_S_Sub.Text = "<";
-            this.btn_S_Sub.UseVisualStyleBackColor = false;
-            this.btn_S_Sub.Visible = false;
-            this.btn_S_Sub.Click += new System.EventHandler(this.btn_S_Sub_Click);
-            // 
-            // btn_S_Add
-            // 
-            this.btn_S_Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.btn_S_Add.FlatAppearance.BorderSize = 0;
-            this.btn_S_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_S_Add.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_S_Add.ForeColor = System.Drawing.Color.White;
-            this.btn_S_Add.Location = new System.Drawing.Point(131, 348);
-            this.btn_S_Add.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_S_Add.Name = "btn_S_Add";
-            this.btn_S_Add.Size = new System.Drawing.Size(23, 23);
-            this.btn_S_Add.TabIndex = 5;
-            this.btn_S_Add.Text = ">";
-            this.btn_S_Add.UseVisualStyleBackColor = false;
-            this.btn_S_Add.Visible = false;
-            this.btn_S_Add.Click += new System.EventHandler(this.btn_S_Add_Click);
             // 
             // pnl_btn
             // 
@@ -134,11 +81,12 @@ namespace LiveTimer
             // 
             // btn_show
             // 
+            this.btn_show.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_show.FlatAppearance.BorderSize = 0;
             this.btn_show.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_show.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btn_show.ForeColor = System.Drawing.Color.White;
-            this.btn_show.Location = new System.Drawing.Point(0, 381);
+            this.btn_show.Location = new System.Drawing.Point(0, 439);
             this.btn_show.Margin = new System.Windows.Forms.Padding(0);
             this.btn_show.Name = "btn_show";
             this.btn_show.Size = new System.Drawing.Size(175, 47);
@@ -147,6 +95,22 @@ namespace LiveTimer
             this.btn_show.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_show.UseVisualStyleBackColor = true;
             this.btn_show.Click += new System.EventHandler(this.btn_show_Click);
+            // 
+            // btn_SerialPortSetting
+            // 
+            this.btn_SerialPortSetting.FlatAppearance.BorderSize = 0;
+            this.btn_SerialPortSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SerialPortSetting.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_SerialPortSetting.ForeColor = System.Drawing.Color.White;
+            this.btn_SerialPortSetting.Location = new System.Drawing.Point(0, 323);
+            this.btn_SerialPortSetting.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_SerialPortSetting.Name = "btn_SerialPortSetting";
+            this.btn_SerialPortSetting.Size = new System.Drawing.Size(175, 47);
+            this.btn_SerialPortSetting.TabIndex = 1;
+            this.btn_SerialPortSetting.Text = "外部硬體";
+            this.btn_SerialPortSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_SerialPortSetting.UseVisualStyleBackColor = true;
+            this.btn_SerialPortSetting.Click += new System.EventHandler(this.btn_SerialPortSetting_Click);
             // 
             // btn_endTime
             // 
@@ -222,7 +186,7 @@ namespace LiveTimer
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::LiveTimer.Properties.Resources.toppng_com_browser_history_clock_icon_vector_white_541x541;
+            this.pictureBox1.Image = global::LiveTimer.Properties.Resources.Time_png;
             this.pictureBox1.Location = new System.Drawing.Point(42, 36);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 90);
@@ -300,7 +264,7 @@ namespace LiveTimer
             this.pnl_default.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.pnl_default.Location = new System.Drawing.Point(175, 25);
             this.pnl_default.Name = "pnl_default";
-            this.pnl_default.Size = new System.Drawing.Size(406, 403);
+            this.pnl_default.Size = new System.Drawing.Size(406, 461);
             this.pnl_default.TabIndex = 4;
             // 
             // timer1
@@ -308,12 +272,17 @@ namespace LiveTimer
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(79)))), ((int)(((byte)(79)))));
-            this.ClientSize = new System.Drawing.Size(581, 428);
+            this.ClientSize = new System.Drawing.Size(581, 486);
             this.Controls.Add(this.pnl_default);
             this.Controls.Add(this.pnl_top);
             this.Controls.Add(this.pnl_page);
@@ -321,7 +290,6 @@ namespace LiveTimer
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnl_page.ResumeLayout(false);
-            this.pnl_page.PerformLayout();
             this.pnl_nowTime.ResumeLayout(false);
             this.pnl_nowTime.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -349,9 +317,8 @@ namespace LiveTimer
         private System.Windows.Forms.Panel pnl_default;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lab_titel;
-        private System.Windows.Forms.TextBox txt_S;
-        private System.Windows.Forms.Button btn_S_Sub;
-        private System.Windows.Forms.Button btn_S_Add;
+        private System.Windows.Forms.Button btn_SerialPortSetting;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

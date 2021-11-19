@@ -32,6 +32,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +61,11 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UCEndTime.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,6 +81,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetTime.cs" />
+    <Compile Include="UCPortSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCPortSetting.Designer.cs">
+      <DependentUpon>UCPortSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCStartTime.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,20 +110,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="UCPortSetting.resx">
+      <DependentUpon>UCPortSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCStartTime.resx">
       <DependentUpon>UCStartTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCSetTime.resx">
       <DependentUpon>UCSetTime.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,10 +137,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\toppng.com-browser-history-clock-icon-vector-white-541x541.png" />
+    <None Include="Resources\Time.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\unknown.png" />
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usb-port_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

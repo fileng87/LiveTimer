@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
+using System.IO;
+using System.Net;
 
 namespace LiveTimer
 {
@@ -25,32 +28,13 @@ namespace LiveTimer
         public Point downPoint = Point.Empty;
 
         private UCSetTime setTime = new UCSetTime();
-        
         private UCStartTime startTime = new UCStartTime();
-
         private UCEndTime endTime = new UCEndTime();
+        private UCPortSetting UCPortSetting = new UCPortSetting();
 
         public Form2 fm = new Form2();
 
         private bool s = false;
-
-    
-
-
-
-        private int checknum(int fontss)
-        {
-            if (fontss >= 73)
-            {
-                return 0;
-            }
-            else if (fontss < 0)
-            {
-                return 72;
-            }
-            return fontss;
-        }
-
 
         private void pnl_top_MouseDown(object sender, MouseEventArgs e)
         {
@@ -75,7 +59,22 @@ namespace LiveTimer
         {
             btn_setTime_Click(null, null);
             timer1.Start();
-            txt_S.Text = fm.getFontSize().ToString();
+            if (!backgroundWorker1.IsBusy)
+            {
+                backgroundWorker1.RunWorkerAsync();
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            HttpListener listener = new HttpListener();
+            listener.Prefixes.Add("http://localhost:8080/");
+            listener.Prefixes.Add("http://*:8080/");
+            listener.Start();
+            while (true)
+            {
+                serverData(startTime.Time_(), listener);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -83,8 +82,9 @@ namespace LiveTimer
             string h = DateTime.Now.Hour.ToString().PadLeft(2, '0');
             string m = DateTime.Now.Minute.ToString().PadLeft(2, '0');
             string s = DateTime.Now.Second.ToString().PadLeft(2, '0');
-            
+
             lab_nowTime.Text = $"現在時間：{h}:{m}:{s}";
+
             fm.NowTime($"{h}:{m}:{s}");
             fm.SetTime(setTime.Time());
             fm.StartTime(startTime.Time());
@@ -108,6 +108,7 @@ namespace LiveTimer
             btn_setTime.BackColor = Color.FromArgb(38, 38, 38);
             btn_startTime.BackColor = Color.FromArgb(38, 38, 38);
             btn_endTime.BackColor = Color.FromArgb(38, 38, 38);
+            btn_SerialPortSetting.BackColor = Color.FromArgb(38, 38, 38);
         }
 
         private void btn_setTime_MouseDown(object sender, MouseEventArgs e)
@@ -152,6 +153,7 @@ namespace LiveTimer
             setBtn(btn_setTime);
             lab_titel.Text = "距離切換剩餘";
             openUserContral(setTime);
+            pictureBox1.Image = LiveTimer.Properties.Resources.Time_png;
         }
 
         private void btn_startTime_Click(object sender, EventArgs e)
@@ -160,7 +162,7 @@ namespace LiveTimer
             setBtn(btn_startTime);
             lab_titel.Text = "距離開始的時間";
             openUserContral(startTime);
-           
+            pictureBox1.Image = LiveTimer.Properties.Resources.Time_png;
         }
 
         private void btn_endTime_Click(object sender, EventArgs e)
@@ -169,6 +171,7 @@ namespace LiveTimer
             setBtn(btn_endTime);
             lab_titel.Text = "距離結束時間";
             openUserContral(endTime);
+            pictureBox1.Image = LiveTimer.Properties.Resources.Time_png;
         }
 
         private void btn_show_Click(object sender, EventArgs e)
@@ -176,9 +179,6 @@ namespace LiveTimer
             if(s != true)
             {
                 btn_show.Text = "關閉投影";
-                btn_S_Sub.Visible = true;
-                btn_S_Add.Visible = true;
-                txt_S.Visible = true;
                 if (fm != null)
                 {
                     fm.Close();
@@ -191,12 +191,8 @@ namespace LiveTimer
             else
             {
                 btn_show.Text = "顯示投影";
-                btn_S_Sub.Visible = false;
-                btn_S_Add.Visible = false;
-                txt_S.Visible = false;
                 fm.Close();
                 s = false;
-                txt_S.Text = fm.getFontSize().ToString();
             }
         }
 
@@ -205,16 +201,26 @@ namespace LiveTimer
 
         }
 
- 
-
-        private void btn_S_Sub_Click(object sender, EventArgs e)
+        private void btn_SerialPortSetting_Click(object sender, EventArgs e)
         {
-            txt_S.Text = fm.fontsi().ToString();
+            btnReset();
+            setBtn(btn_SerialPortSetting);
+            lab_titel.Text = "SerialPortSetting";
+            openUserContral(UCPortSetting);
+            pictureBox1.Image = LiveTimer.Properties.Resources.usb_port_1;
         }
 
-        private void btn_S_Add_Click(object sender, EventArgs e)
+        private void serverData(string data, HttpListener listener)
         {
-            txt_S.Text = fm.fontsid().ToString();
+            HttpListenerContext context = listener.GetContext();
+            HttpListenerRequest request = context.Request;
+            HttpListenerResponse response = context.Response;
+            response.StatusCode = 200;
+            response.ContentType = "text/plain";
+            response.SendChunked = true;
+            byte[] info = new UTF8Encoding(true).GetBytes(data);
+            response.OutputStream.Write(info, 0, info.Length);
+            response.OutputStream.Close();
         }
     }
 }

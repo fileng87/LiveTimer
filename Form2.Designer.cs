@@ -111,7 +111,7 @@ namespace LiveTimer
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel1.BackgroundImage = global::LiveTimer.Properties.Resources.unknown;
+            this.tableLayoutPanel1.BackgroundImage = global::LiveTimer.Properties.Resources.Background_png;
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));

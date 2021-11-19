@@ -63,9 +63,9 @@ namespace LiveTimer.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap toppng_com_browser_history_clock_icon_vector_white_541x541 {
+        internal static System.Drawing.Bitmap Background_png {
             get {
-                object obj = ResourceManager.GetObject("toppng.com-browser-history-clock-icon-vector-white-541x541", resourceCulture);
+                object obj = ResourceManager.GetObject("Background.png", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,19 @@ namespace LiveTimer.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap unknown {
+        internal static System.Drawing.Bitmap Time_png {
             get {
-                object obj = ResourceManager.GetObject("unknown", resourceCulture);
+                object obj = ResourceManager.GetObject("Time.png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap usb_port_1 {
+            get {
+                object obj = ResourceManager.GetObject("usb_port_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
