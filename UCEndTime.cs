@@ -123,11 +123,11 @@ namespace LiveTimer
             smm = elapsedSpan.Minutes;
             sss = elapsedSpan.Seconds;
             lab_Time.Text = $"{h}:{m}:{s}";
-            if (chack >= 0) 
+            if (chack >= 0)
             {
                 chackflag = false;
-            } 
-            else if(chack<0)
+            }
+            else if (chack < 0)
             {
                 chackflag = true;
             }
