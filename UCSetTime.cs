@@ -16,14 +16,36 @@ namespace LiveTimer
         {
             InitializeComponent();
         }
-
+      
         private SetTime SetTime;
-
+        public int seth, setm, sets;
         public string Time()
         {
             return lab_Time.Text;
         }
-
+        public string Necolor()
+        {
+            if (seth == 0 && setm == 0 && sets <= 10)
+            {
+                lab_Time.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
+                return "3";
+            }
+            else if (seth == 0 && setm == 0 && sets <= 30)
+            {
+                lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFF8C");
+                return "2";
+            }
+            else if (seth == 0 && setm == 0 && sets <= 59)
+            {
+                lab_Time.ForeColor = ColorTranslator.FromHtml("#8CFF8C");
+                return "1";
+            }
+            else
+            {
+                lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
+                return "0";
+            }
+        }
         private void SetTime_Load(object sender, EventArgs e)
         {
 
@@ -118,15 +140,18 @@ namespace LiveTimer
         {
             timer1.Stop();
         }
-
+       
         private void timer1_Tick(object sender, EventArgs e)
         {
             SetTime.S--;
+            seth = SetTime.H;
+            setm = SetTime.M;
+            sets = SetTime.S;
             string h = SetTime.H.ToString().PadLeft(2, '0');
             string m = SetTime.M.ToString().PadLeft(2, '0');
             string s = SetTime.S.ToString().PadLeft(2, '0');
             lab_Time.Text = $"{h}:{m}:{s}";
-            
+           
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
