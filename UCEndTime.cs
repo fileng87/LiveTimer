@@ -123,9 +123,12 @@ namespace LiveTimer
             smm = elapsedSpan.Minutes;
             sss = elapsedSpan.Seconds;
             lab_Time.Text = $"{h}:{m}:{s}";
-               if (chack <= 0) {
+            if (chack >= 0) 
+            {
                 chackflag = false;
-            } else if(chack>0){
+            } 
+            else if(chack<0)
+            {
                 chackflag = true;
             }
         }
@@ -138,6 +141,7 @@ namespace LiveTimer
             timer1.Stop();
             lab_Time.Text = $"00:00:00";
         }
+
         public int Necolor()
         {
             if (chackflag)
@@ -148,26 +152,23 @@ namespace LiveTimer
             }
             else
             {
-                if (shh == 0 && smm == 0 && sss <= 10)
-                {
-                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
-                    return 3;
-                }
-                else if (shh == 0 && smm == 0 && sss <= 30)
-                {
-                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFF8C");
-                    return 2;
-                }
-                else if (shh == 0 && smm == 0 && sss <= 59)
+                if (shh == 0 && smm < 1)
                 {
                     lab_Time.ForeColor = ColorTranslator.FromHtml("#8CFF8C");
                     return 1;
                 }
-                else
+                else if (shh == 0 && smm < 5)
                 {
-                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
-                    return 0;
+                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFF8C");
+                    return 2;
                 }
+                else if (shh == 0 && smm < 10)
+                {
+                    lab_Time.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
+                    return 3;
+                }
+                lab_Time.ForeColor = ColorTranslator.FromHtml("#FFFFFF");
+                return 0;
             }
 
         }

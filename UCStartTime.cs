@@ -27,7 +27,7 @@ namespace LiveTimer
 
         private void StartTime_Load(object sender, EventArgs e)
         {
-        
+            
         }
    
         private int checknum(int temp)
@@ -117,7 +117,7 @@ namespace LiveTimer
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
-        {            
+        {
             long elapsedTicks = Math.Abs(DateTime.Now.Ticks - StartTime.Ticks);
             long chack = DateTime.Now.Ticks - StartTime.Ticks;
             TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
