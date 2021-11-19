@@ -177,7 +177,6 @@ namespace LiveTimer
                 lab_Time.ForeColor = ColorTranslator.FromHtml("#FF8C8C");
                 return 3;
             }
-
         }
     }
 }
