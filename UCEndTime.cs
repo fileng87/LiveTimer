@@ -133,6 +133,13 @@ namespace LiveTimer
             }
         }
 
+        private void UCEndTime_Load(object sender, EventArgs e)
+        {
+            txt_H.Text = DateTime.Now.Hour.ToString();
+            txt_M.Text = DateTime.Now.Minute.ToString();
+            txt_S.Text = DateTime.Now.Second.ToString();
+        }
+
         private void btn_reset_Click(object sender, EventArgs e)
         {
             txt_H.Text = DateTime.Now.Hour.ToString().PadLeft(2, '0');

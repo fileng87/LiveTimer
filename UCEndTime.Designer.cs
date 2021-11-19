@@ -46,9 +46,9 @@ namespace LiveTimer
             this.btn_M_Sub = new System.Windows.Forms.Button();
             this.btn_start = new System.Windows.Forms.Button();
             this.btn_H_Sub = new System.Windows.Forms.Button();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.btn_Stop = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_reset = new System.Windows.Forms.Button();
             this.pnl_title.SuspendLayout();
             this.pnl_contral.SuspendLayout();
             this.SuspendLayout();
@@ -289,6 +289,22 @@ namespace LiveTimer
             this.btn_H_Sub.UseVisualStyleBackColor = false;
             this.btn_H_Sub.Click += new System.EventHandler(this.btn_H_Sub_Click);
             // 
+            // btn_reset
+            // 
+            this.btn_reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.btn_reset.FlatAppearance.BorderSize = 0;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reset.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.Location = new System.Drawing.Point(80, 96);
+            this.btn_reset.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(78, 23);
+            this.btn_reset.TabIndex = 2;
+            this.btn_reset.Text = "重置";
+            this.btn_reset.UseVisualStyleBackColor = false;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
             // btn_Stop
             // 
             this.btn_Stop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
@@ -310,22 +326,6 @@ namespace LiveTimer
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btn_reset
-            // 
-            this.btn_reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
-            this.btn_reset.FlatAppearance.BorderSize = 0;
-            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_reset.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btn_reset.ForeColor = System.Drawing.Color.White;
-            this.btn_reset.Location = new System.Drawing.Point(80, 96);
-            this.btn_reset.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(78, 23);
-            this.btn_reset.TabIndex = 2;
-            this.btn_reset.Text = "重置";
-            this.btn_reset.UseVisualStyleBackColor = false;
-            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
-            // 
             // UCEndTime
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -334,6 +334,7 @@ namespace LiveTimer
             this.Controls.Add(this.pnl_title);
             this.Name = "UCEndTime";
             this.Size = new System.Drawing.Size(406, 365);
+            this.Load += new System.EventHandler(this.UCEndTime_Load);
             this.pnl_title.ResumeLayout(false);
             this.pnl_title.PerformLayout();
             this.pnl_contral.ResumeLayout(false);

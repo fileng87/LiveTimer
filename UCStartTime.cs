@@ -27,7 +27,9 @@ namespace LiveTimer
 
         private void StartTime_Load(object sender, EventArgs e)
         {
-            
+            txt_H.Text = DateTime.Now.Hour.ToString();
+            txt_M.Text = DateTime.Now.Minute.ToString();
+            txt_S.Text = DateTime.Now.Second.ToString();
         }
    
         private int checknum(int temp)
