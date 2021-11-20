@@ -96,7 +96,11 @@ namespace LiveTimer
             this.button1.TabIndex = 3;
             this.button1.Text = "連線";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btn_reset_Click);
+            this.button1.Click += new System.EventHandler(this.Button1);
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // textBox1
             // 
@@ -104,6 +108,7 @@ namespace LiveTimer
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(229, 22);
             this.textBox1.TabIndex = 9;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // button2
             // 
@@ -119,6 +124,7 @@ namespace LiveTimer
             this.button2.TabIndex = 7;
             this.button2.Text = "發送";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // richTextBox1
             // 

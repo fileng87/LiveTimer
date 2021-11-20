@@ -28,13 +28,14 @@ namespace LiveTimer
             comboBox1.Items.AddRange(SerialPort.GetPortNames());
         }
 
-        private void btn_reset_Click(object sender, EventArgs e)
+        private void Button1(object sender, EventArgs e)
         {
             try
             {
                 if (serialPort1.IsOpen)
                 {
                     serialPort1.Close();
+                    richTextBox1.Clear();
                     button1.Text = "連接";
                     comboBox1.Enabled = true;
                     comboBox2.Enabled = true;
@@ -69,6 +70,58 @@ namespace LiveTimer
         {
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            SerialPort sp = (SerialPort)sender;
+            string indata = sp.ReadLine();
+
+            Calldelegate(indata);
+        }
+
+        private void Calldelegate(string str)
+        {
+            this.Invoke(new _updateForm(updateForm), str);
+        }
+
+        public delegate void _updateForm(string str);
+
+        private void updateForm(string str)
+        {
+            richTextBox1.AppendText(str);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (serialPort1.IsOpen)
+                {
+                    serialPort1.Write(textBox1.Text);
+                    textBox1.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                serialPort1.Close();
+                serialPort1 = new System.IO.Ports.SerialPort();
+                comboBox1.Items.Clear();
+                comboBox1.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
+                System.Media.SystemSounds.Beep.Play();
+                button1.Text = "連接";
+                MessageBox.Show(ex.Message);
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                button2_Click(button2, new EventArgs());
+            }
         }
     }
 }

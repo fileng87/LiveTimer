@@ -32,7 +32,6 @@ namespace LiveTimer
             this.components = new System.ComponentModel.Container();
             this.pnl_contral = new System.Windows.Forms.Panel();
             this.btn_reset = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txt_H = new System.Windows.Forms.TextBox();
             this.btn_H_Add = new System.Windows.Forms.Button();
             this.lab_S = new System.Windows.Forms.Label();
@@ -57,7 +56,6 @@ namespace LiveTimer
             // pnl_contral
             // 
             this.pnl_contral.Controls.Add(this.btn_reset);
-            this.pnl_contral.Controls.Add(this.textBox1);
             this.pnl_contral.Controls.Add(this.txt_H);
             this.pnl_contral.Controls.Add(this.btn_H_Add);
             this.pnl_contral.Controls.Add(this.lab_S);
@@ -93,21 +91,6 @@ namespace LiveTimer
             this.btn_reset.Text = "重置";
             this.btn_reset.UseVisualStyleBackColor = false;
             this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.DarkGray;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("微軟正黑體", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(80, 128);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(246, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.txt_H_TextChanged);
             // 
             // txt_H
             // 
@@ -381,6 +364,5 @@ namespace LiveTimer
         private System.Windows.Forms.Label lab_Time;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btn_reset;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
