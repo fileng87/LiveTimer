@@ -55,11 +55,13 @@ namespace LiveTimer
             // 
             // comboBox1
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox1.BackColor = System.Drawing.Color.White;
+            this.comboBox1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox1.ForeColor = System.Drawing.Color.Black;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(67, 25);
+            this.comboBox1.Location = new System.Drawing.Point(67, 23);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(90, 20);
+            this.comboBox1.Size = new System.Drawing.Size(90, 24);
             this.comboBox1.TabIndex = 1;
             // 
             // label2
@@ -67,7 +69,7 @@ namespace LiveTimer
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(161, 26);
+            this.label2.Location = new System.Drawing.Point(163, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 16);
             this.label2.TabIndex = 0;
@@ -75,11 +77,13 @@ namespace LiveTimer
             // 
             // comboBox2
             // 
-            this.comboBox2.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBox2.BackColor = System.Drawing.Color.White;
+            this.comboBox2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBox2.ForeColor = System.Drawing.Color.Black;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(206, 25);
+            this.comboBox2.Location = new System.Drawing.Point(204, 24);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(90, 20);
+            this.comboBox2.Size = new System.Drawing.Size(90, 24);
             this.comboBox2.TabIndex = 1;
             // 
             // button1
@@ -89,10 +93,10 @@ namespace LiveTimer
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(308, 23);
+            this.button1.Location = new System.Drawing.Point(306, 24);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 23);
+            this.button1.Size = new System.Drawing.Size(76, 24);
             this.button1.TabIndex = 3;
             this.button1.Text = "連線";
             this.button1.UseVisualStyleBackColor = false;
@@ -104,7 +108,11 @@ namespace LiveTimer
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
             this.textBox1.Location = new System.Drawing.Point(65, 75);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(229, 22);
             this.textBox1.TabIndex = 9;
@@ -117,10 +125,10 @@ namespace LiveTimer
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(306, 73);
+            this.button2.Location = new System.Drawing.Point(306, 75);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 23);
+            this.button2.Size = new System.Drawing.Size(76, 22);
             this.button2.TabIndex = 7;
             this.button2.Text = "發送";
             this.button2.UseVisualStyleBackColor = false;
@@ -133,6 +141,7 @@ namespace LiveTimer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BackColor = System.Drawing.Color.White;
             this.richTextBox1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.richTextBox1.ForeColor = System.Drawing.Color.Black;
             this.richTextBox1.Location = new System.Drawing.Point(24, 103);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(358, 333);
@@ -145,7 +154,7 @@ namespace LiveTimer
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(27, 80);
+            this.label3.Location = new System.Drawing.Point(29, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 16);
             this.label3.TabIndex = 6;
