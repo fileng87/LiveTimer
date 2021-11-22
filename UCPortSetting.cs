@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Threading;
 
 namespace LiveTimer
 {
@@ -39,11 +40,15 @@ namespace LiveTimer
                     button1.Text = "連接";
                     comboBox1.Enabled = true;
                     comboBox2.Enabled = true;
+                    textBox1.Enabled = false;
+                    button2.Enabled = false;
                 }
                 else
                 {
                     comboBox1.Enabled = false;
                     comboBox2.Enabled = false;
+                    textBox1.Enabled = true;
+                    button2.Enabled = true;
                     serialPort1.PortName = comboBox1.Text;
                     serialPort1.BaudRate = Convert.ToInt32(comboBox2.Text);
                     serialPort1.DataBits = 8;
@@ -63,6 +68,8 @@ namespace LiveTimer
                 MessageBox.Show(ex.Message);
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
+                textBox1.Enabled = false;
+                button2.Enabled = false;
             }
         }
 
@@ -113,6 +120,8 @@ namespace LiveTimer
                 MessageBox.Show(ex.Message);
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
+                textBox1.Enabled = false;
+                button2.Enabled = false;
             }
         }
 
@@ -122,6 +131,26 @@ namespace LiveTimer
             {
                 button2_Click(button2, new EventArgs());
             }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
