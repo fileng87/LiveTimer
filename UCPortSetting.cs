@@ -39,11 +39,15 @@ namespace LiveTimer
                     button1.Text = "連接";
                     comboBox1.Enabled = true;
                     comboBox2.Enabled = true;
+                    textBox1.Enabled = false;
+                    button2.Enabled = false;
                 }
                 else
                 {
                     comboBox1.Enabled = false;
                     comboBox2.Enabled = false;
+                    textBox1.Enabled = true;
+                    button2.Enabled = true;
                     serialPort1.PortName = comboBox1.Text;
                     serialPort1.BaudRate = Convert.ToInt32(comboBox2.Text);
                     serialPort1.DataBits = 8;
@@ -63,6 +67,8 @@ namespace LiveTimer
                 MessageBox.Show(ex.Message);
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
+                textBox1.Enabled = false;
+                button2.Enabled = false;
             }
         }
 
@@ -113,6 +119,8 @@ namespace LiveTimer
                 MessageBox.Show(ex.Message);
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
+                textBox1.Enabled = false;
+                button2.Enabled = false;
             }
         }
 
