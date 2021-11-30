@@ -25,6 +25,16 @@ namespace LiveTimer
             return lab_Time.Text;
         }
 
+        public void setTime(string sh, string sm, string ss)
+        {
+            /*int h = int.Parse(sh);
+            int m = int.Parse(sm);
+            int s = int.Parse(ss);*/
+            txt_H.Text = sh.ToString();
+            txt_M.Text = sm.ToString();
+            txt_S.Text = ss.ToString();
+        }
+
         private int checknum(int temp)
         {
             if (temp >= 60)

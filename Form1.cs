@@ -65,6 +65,16 @@ namespace LiveTimer
             }
         }
 
+        public void _setTime(string start, string h, string m, string s)
+        {
+            switch (start)
+            {
+                case "e":
+                    endTime.setTime(h, m, s);
+                    break;
+            }
+        }
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             HttpListener listener = new HttpListener();
@@ -94,7 +104,7 @@ namespace LiveTimer
             fm.settimeredend(endTime.Necolor());
         }
        
-            private void setBtn(Button btn)
+        private void setBtn(Button btn)
         {
             pnl_btn.Visible = true;
             pnl_btn.Height = btn.Height;
@@ -164,6 +174,8 @@ namespace LiveTimer
             openUserContral(startTime);
             pictureBox1.Image = LiveTimer.Properties.Resources.Time_png;
         }
+
+
 
         private void btn_endTime_Click(object sender, EventArgs e)
         {

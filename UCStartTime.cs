@@ -119,13 +119,13 @@ namespace LiveTimer
             timer1.Stop();
             StartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, int.Parse(txt_H.Text), int.Parse(txt_M.Text), int.Parse(txt_S.Text));
             timer1.Start();
-            //timer2.Start();
+            timer2.Start();
         }
 
         private void btn_Stop_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            //timer2.Stop();
+            timer2.Stop();
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -145,12 +145,12 @@ namespace LiveTimer
                 zerotime = false;
             } else if(chack>0){
                 chackflag = true;
-                //timer2.Stop();
+                timer2.Stop();
                 zerotime = true;
             }
         }
 
-        /*private void timer2_Tick(object sender, EventArgs e)
+        private void timer2_Tick(object sender, EventArgs e)
         {
             string path = textBox1.Text == "" ? Application.StartupPath + @"\StartTime.txt" : textBox1.Text + @"\StartTime.txt";
             if (!File.Exists(path))
@@ -158,17 +158,17 @@ namespace LiveTimer
                 using (FileStream fs = File.Create(path))
                 {
                     byte[] info = new UTF8Encoding(true).GetBytes(lab_Time.Text);
-                    fs.Write(info, 0, info.Length);
+                    fs.WriteAsync(info, 0, info.Length);
                 }
             }
             else
             {
                 using(StreamWriter sw = new StreamWriter(path))
                 {
-                    sw.WriteAsync(lab_Time.Text);
+                    sw.Write(lab_Time.Text);
                 }
             }
-        }*/
+        }
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
@@ -177,6 +177,16 @@ namespace LiveTimer
             txt_S.Text = DateTime.Now.Second.ToString().PadLeft(2, '0');
             timer1.Stop();
             lab_Time.Text = $"00:00:00";
+        }
+
+        private void pnl_title_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnl_contral_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         public int Necolor()

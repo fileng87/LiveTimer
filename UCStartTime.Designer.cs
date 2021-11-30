@@ -35,6 +35,7 @@ namespace LiveTimer
             this.txt_H = new System.Windows.Forms.TextBox();
             this.btn_H_Add = new System.Windows.Forms.Button();
             this.lab_S = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txt_M = new System.Windows.Forms.TextBox();
             this.lab_M = new System.Windows.Forms.Label();
             this.btn_M_Add = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@ namespace LiveTimer
             this.pnl_title = new System.Windows.Forms.Panel();
             this.lab_Time = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnl_contral.SuspendLayout();
             this.pnl_title.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +61,7 @@ namespace LiveTimer
             this.pnl_contral.Controls.Add(this.txt_H);
             this.pnl_contral.Controls.Add(this.btn_H_Add);
             this.pnl_contral.Controls.Add(this.lab_S);
+            this.pnl_contral.Controls.Add(this.textBox1);
             this.pnl_contral.Controls.Add(this.txt_M);
             this.pnl_contral.Controls.Add(this.lab_M);
             this.pnl_contral.Controls.Add(this.btn_M_Add);
@@ -75,6 +78,7 @@ namespace LiveTimer
             this.pnl_contral.Name = "pnl_contral";
             this.pnl_contral.Size = new System.Drawing.Size(406, 160);
             this.pnl_contral.TabIndex = 2;
+            this.pnl_contral.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_contral_Paint);
             // 
             // btn_reset
             // 
@@ -131,9 +135,23 @@ namespace LiveTimer
             this.lab_S.ForeColor = System.Drawing.Color.White;
             this.lab_S.Location = new System.Drawing.Point(245, 33);
             this.lab_S.Name = "lab_S";
-            this.lab_S.Size = new System.Drawing.Size(32, 16);
+            this.lab_S.Size = new System.Drawing.Size(39, 19);
             this.lab_S.TabIndex = 3;
             this.lab_S.Text = "秒鐘";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.DarkGray;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("微軟正黑體", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(80, 130);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(246, 23);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt_M
             // 
@@ -158,7 +176,7 @@ namespace LiveTimer
             this.lab_M.ForeColor = System.Drawing.Color.White;
             this.lab_M.Location = new System.Drawing.Point(161, 33);
             this.lab_M.Name = "lab_M";
-            this.lab_M.Size = new System.Drawing.Size(32, 16);
+            this.lab_M.Size = new System.Drawing.Size(39, 19);
             this.lab_M.TabIndex = 3;
             this.lab_M.Text = "分鐘";
             // 
@@ -185,7 +203,7 @@ namespace LiveTimer
             this.lab_H.ForeColor = System.Drawing.Color.White;
             this.lab_H.Location = new System.Drawing.Point(77, 33);
             this.lab_H.Name = "lab_H";
-            this.lab_H.Size = new System.Drawing.Size(32, 16);
+            this.lab_H.Size = new System.Drawing.Size(39, 19);
             this.lab_H.TabIndex = 3;
             this.lab_H.Text = "小時";
             // 
@@ -309,6 +327,7 @@ namespace LiveTimer
             this.pnl_title.Name = "pnl_title";
             this.pnl_title.Size = new System.Drawing.Size(406, 295);
             this.pnl_title.TabIndex = 5;
+            this.pnl_title.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_title_Paint);
             // 
             // lab_Time
             // 
@@ -317,7 +336,7 @@ namespace LiveTimer
             this.lab_Time.ForeColor = System.Drawing.Color.White;
             this.lab_Time.Location = new System.Drawing.Point(20, 107);
             this.lab_Time.Name = "lab_Time";
-            this.lab_Time.Size = new System.Drawing.Size(371, 101);
+            this.lab_Time.Size = new System.Drawing.Size(463, 125);
             this.lab_Time.TabIndex = 0;
             this.lab_Time.Text = "00:00:00";
             // 
@@ -325,6 +344,10 @@ namespace LiveTimer
             // 
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // UCStartTime
             // 
@@ -364,5 +387,7 @@ namespace LiveTimer
         private System.Windows.Forms.Label lab_Time;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btn_reset;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

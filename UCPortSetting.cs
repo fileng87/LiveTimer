@@ -83,8 +83,29 @@ namespace LiveTimer
         {
             SerialPort sp = (SerialPort)sender;
             string indata = sp.ReadLine();
-
+            checkMode(indata);
             Calldelegate(indata);
+        }
+
+        private void checkMode(string data)
+        {
+            Form1 fm = (Form1)this.ParentForm;
+            if (data.StartsWith("s"))
+            {
+                data.Remove(0, 1);
+                string[] time = data.Split(':');
+            }
+            else if (data.StartsWith("r"))
+            {
+                data.Remove(0, 1);
+                string[] time = data.Split(':');
+            }
+            else if (data.StartsWith("e"))
+            {
+                data.Remove(0, 1);
+                string[] time = data.Split(':');
+                fm._setTime("e", time[0], time[1], time[2]);
+            }
         }
 
         private void Calldelegate(string str)
